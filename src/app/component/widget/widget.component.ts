@@ -6,14 +6,16 @@ import {WidgetActionsService} from '../../services/widget-actions.service';
   selector: 'app-widget',
   standalone: true,
   imports: [],
+  providers: [WidgetActionsService,WidgetStateService],
+
   template: `
     <div class="widget-header">
       <div class="widget-title">Weather Forecast</div>
       <div class="widget-subtitle">Current weather in your location</div>
     </div>
     <div class="widget-content">
-      <div class="sky-condition"></div>
-      <div class="temperature"></div>
+      <div class="sky-condition"> {{ (state.data.skyCondition === 'sunny') ? '☀️'  : '🌨️'}}</div>
+      <div class="temperature"> {{state.data.temperature}}c</div>
     </div>
     <div class="widget-actions">
       <button>Reload</button>

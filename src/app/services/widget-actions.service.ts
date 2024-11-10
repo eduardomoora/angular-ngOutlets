@@ -1,9 +1,16 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
+import {WidgetStateService} from './widget-state.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class WidgetActionsService {
+ state = inject(WidgetStateService, {self: true});
 
-  constructor() { }
+ reload(): void{
+   this.state.lastUpdateAt = new Date();
+   console.log('Reload widget Data...');
+ }
+
+ copyData():void{
+   console.log('Copy widget Data into clipboard...');
+ }
 }

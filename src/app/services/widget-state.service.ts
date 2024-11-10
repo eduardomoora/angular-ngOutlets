@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class WidgetStateService {
+export type Condition = 'sunny' | 'cloudy'
 
-  constructor() { }
+interface WeatherData {
+  temperature: number;
+  windSpeed: number;
+  skyCondition: Condition;
+}
+
+@Injectable()
+export class WidgetStateService {
+  data: WeatherData = {
+    temperature: 20,
+    windSpeed:5,
+    skyCondition: 'sunny'
+  }
+  lastUpdateAt = new Date();
 }
