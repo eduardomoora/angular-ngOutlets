@@ -1,5 +1,19 @@
+ <app-widget
+    [customTemplateHeader]="customHeader"
+    [customTemplateContent]="customContent"
+    [customTemplateActions]="customActions"
+  >
+  </app-widget>
+  <ng-template #customHeader>
+    <h1>hello from parent component</h1>
+  </ng-template>
 
+  <ng-template let-state="state" #customContent>
+    <div class="sky-condition"> {{ (state.data.skyCondition === 'sunny') ? '☀️' : '🌨️' }} !!</div>
+    <div class="temperature"> {{ state.data.temperature }}c</div>
+  </ng-template>
 
-  <app-widget></app-widget>
-
+  <ng-template #customActions>
+    <app-actions></app-actions>
+  </ng-template>
 
